@@ -15,6 +15,7 @@ class MenuController
         puts "4 - Search for an entry"
         puts "5 - Import entries from a CSV"
         puts "6 - Exit"
+        puts "7 - Broken Arrow - Deletes Everything"
         puts "Enter your selection: "
     
         selection = gets.to_i
@@ -44,6 +45,13 @@ class MenuController
             when 6
                 puts "Good-bye!"
                 exit(0)
+            when 7
+                system "clear"
+                3.times do 
+                    puts "Broken Arrow"
+                end
+                address_book.delete_all
+                main_menu
             else
                 system "clear"
                 puts "Sorry, that is not a valid input"
@@ -61,7 +69,7 @@ class MenuController
         system "clear"
         puts "End of entries"
     end
-    
+
     def view_entry_number
         print "Type the number of your entry: "
         number = gets.chomp.to_i
@@ -97,7 +105,7 @@ class MenuController
         address_book.entries.delete(entry)
         puts "#{entry.name} has been deleted"
     end
-    
+
     def edit_entry(entry)
        print "Updated name: "
        name = gets.chomp
